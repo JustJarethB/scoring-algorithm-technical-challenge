@@ -16,3 +16,4 @@ pnpm i --frozen-lockfile && pnpm start
 - I'm going to start by writing it all in one file, and I'll try and break it down into more logical chunks once I'm happier with my flow and process
 - I've just fetched data and I have seen "I'm a software developer currently in Edinburgh but looking to relocate to London" and "I'm looking for a job in marketing outside of London". My simple regex won't pick up on the intent here but I'm not about to interface with a LLM for this tech task. This can be a module that gets improved over time
 - It's been about 90 minutes, it isn't perfect for sure, but I'm getting a semi-sensible score and report. I've listed a little more than you asked for but that's partly for my debugging, but it might help you understand the output a little better too.
+- I just saw the note "Don’t forget data validation!" so get ready for the most quick-fix assertions you've ever seen
