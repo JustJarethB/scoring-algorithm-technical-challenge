@@ -8,13 +8,15 @@ const MINIMUM_MATCH_SCORE = 1
 const main = async () => {
     Logger.log('Running recommendation algorithm')
     const [members, jobs] = await Promise.all([await api.getMembers(), await api.getJobs()])
-    const results = members.map((member) => {
-        const jobScores = jobs.map(scoreJob(member)).sort(orderByScore).filter((job) => job.score >= MINIMUM_MATCH_SCORE)
-        const recommendations = jobScores.slice(0, 3)
-        return { recommendations, member }
-    })
+    const results = members.map(generateRecommendations(jobs))
     Logger.log('Completed recommendation algorithm')
     results.forEach(printMemberRecommendation)
+}
+// All these functions could be somewhere else but it would probably take longer to decide where to put it than I've already spent on this
+const generateRecommendations = (jobs: Job[]) => (member: Member) => {
+    const jobScores = jobs.map(scoreJob(member)).sort(orderByScore).filter((job) => job.score >= MINIMUM_MATCH_SCORE)
+    const recommendations = jobScores.slice(0, 3)
+    return { recommendations, member }
 }
 
 const printMemberRecommendation = ({ member, recommendations }: { member: Member, recommendations: { job: Job, score: number }[] }) => {
