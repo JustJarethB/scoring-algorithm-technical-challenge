@@ -7,7 +7,8 @@ I used `pnpm` but you are welcome to substitute for npm/yarn
 pnpm i --frozen-lockfile && pnpm start
 ```
 
-## Thought process:
+
+## Thought process
 - TS > JS. It'll help me run faster
 - Looking at the end points, I think I want to regex search bios for words in job name and location. 
 - Maybe I can give a score for amount of matches. We can then dial up/down the number for more refined matching
